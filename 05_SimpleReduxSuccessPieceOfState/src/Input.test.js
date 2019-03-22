@@ -1,8 +1,21 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { findByTestAttr } from '../test/testUtils';
+import { findByTestAttr, storeFactory } from '../test/testUtils';
 import Input from './Input';
+
+/**
+ * Factory function to create a ShallowWrapper for the GuessedWords component.
+ *
+ * @function setup
+ * @param {Object} initialState - Initial state for this setup.
+ * @returns {ShallowWrapper}
+ */
+const setup = (initialState = {}) => {
+    const store = storeFactory(initialState);
+    const wrapper = shallow(<Input store={store} />);
+    console.log(wrapper.debug());
+};
 
 describe('render', () =>{
     describe('word has not been guessed', () => {
