@@ -14,6 +14,16 @@ export class UnconnectedInput extends Component {
         super(props);
 
         this.inputBox = React.createRef();
+        this.submitGuessedWord = this.submitGuessedWord.bind(this);
+    }
+
+    submitGuessedWord(event) {
+        // don't submit form
+        event.preventDefault();
+        const guessedWord = this.inputBox.current.value;
+        if (guessedWord && guessedWord.length > 0) {
+            this.props.guessWord(guessedWord);
+        }
     }
 
     /**
@@ -38,7 +48,7 @@ export class UnconnectedInput extends Component {
                     data-test="submit-button"
                     type="submit"
                     className="btn btn-primary mb-2"
-                    onClick={() => this.props.guessWord('')}
+                    onClick={this.submitGuessedWord}
                 >
                     Submit
                 </button>
