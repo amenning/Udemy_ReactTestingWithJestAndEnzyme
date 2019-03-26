@@ -13,7 +13,6 @@ import { getSecretWord } from './actions';
  */
 const setup = (state = {}, getSecretWordMock) => {
     const wrapper = shallow(<App {...state} getSecretWord={getSecretWordMock || getSecretWord} />);
-    console.log(wrapper.debug());
     return wrapper;
 }
 
